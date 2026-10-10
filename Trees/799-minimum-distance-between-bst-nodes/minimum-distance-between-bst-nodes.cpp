@@ -11,18 +11,18 @@
  */
 class Solution {
 public:
-    vector<int> ans;
-    void inorder(TreeNode* root){
+  
+    void inorder(TreeNode* root,vector<int> &ans){
         if(root==NULL) return;
         
-        inorder(root->left);
+        inorder(root->left,ans);
         ans.push_back(root->val);
-        inorder(root->right);
+        inorder(root->right,ans);
     }
 
     int minDiffInBST(TreeNode* root) {
-        ans.clear();
-        inorder(root);
+          vector<int> ans;
+        inorder(root,ans);
         int min = INT_MAX;
         for(int i=1;i<ans.size();i++){
             if(ans[i] - ans[i-1] < min){
